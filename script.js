@@ -15,8 +15,8 @@ const config = {
         { id: 'home-3', label: 'Tertiary Font: Inter', defaultFont: 'Inter', defaultText: 'Inter serves as the neutral user interface layer, bridging the gap between human interaction and machine processing.', size: 14, lead: 130, color: 'var(--electric-cyan)' }
     ],
     wall: [
-        { id: 'wall-title', label: 'Wall Title', defaultFont: 'Futura', defaultText: 'Exhibition…in Parts', size: 140, lead: 90, color: 'var(--theme-text)' },
-        { id: 'wall-body', label: 'Main Didactic', defaultFont: 'Space Mono', defaultText: 'Welcome to the An Exhibition…in Parts, where art and technology work together. Experience emerging technologies visually expressed through typographic excellence.', size: 24, lead: 150, color: 'var(--terminal-green)' },
+        { id: 'wall-title', label: 'Wall Title', defaultFont: 'Futura', defaultText: 'An Exhibition…\nin Parts', size: 140, lead: 90, color: 'var(--theme-text)' },
+        { id: 'wall-body', label: 'Main Didactic', defaultFont: 'Space Mono', defaultText: 'Welcome to \'An Exhibition…in Parts\', where art and technology work together. Experience emerging technologies visually expressed through typographic excellence.', size: 24, lead: 150, color: 'var(--terminal-green)' },
         { id: 'wall-desc', label: 'Caption / Specs', defaultFont: 'Inter', defaultText: 'Material: Vinyl', size: 12, lead: 120, color: 'var(--grey)' }
     ],
     text: [
@@ -93,8 +93,12 @@ function createControls(targetDiv, elements) {
     elements.forEach(el => {
         styles[el.id] = { italic: false, sc: false };
         
+        // Home 탭인 경우 세로 점선(border-right)을 제거합니다.
+        const isHome = targetDiv === 'home-workspace';
+        const groupStyle = isHome ? 'border-right: none; padding-right: 0;' : '';
+        
         const html = `
-        <div class="control-group" style="${targetDiv === 'home-workspace' ? 'border-bottom:none; padding-bottom:0;' : ''}">
+        <div class="control-group" style="${groupStyle}">
             <h3>[ ${el.label} ]</h3>
             <label>Font & Case</label>
             <div class="row">
@@ -128,13 +132,13 @@ function createControls(targetDiv, elements) {
             <div class="specs" id="${el.id}-specs"></div>
         </div>`;
         
-        if (targetDiv === 'home-workspace') {
+        if (isHome) {
             container.innerHTML += `
-            <div style="display: flex; border: 1px solid var(--border-color); border-radius: 6px; background: var(--panel-bg); overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-                <div class="controls-panel" style="width: 380px; border-right: 1px solid var(--border-color); border-top: none; border-bottom: none; border-left: none;">
+            <div style="display: flex; flex-direction: row; border: 1px solid var(--border-color); border-radius: 6px; background: var(--panel-bg); overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                <div class="controls-panel" style="width: 380px; flex-shrink: 0; display: flex; flex-direction: column; border-right: 1px solid var(--border-color); border-top: none; border-bottom: none; border-left: none;">
                     ${html}
                 </div>
-                <div class="preview-panel" style="border: none; flex-grow: 1; display: flex; align-items: center; justify-content: flex-start; overflow: hidden;">
+                <div class="preview-panel" style="border: none; flex-grow: 1; display: flex; align-items: center; justify-content: flex-start; overflow: hidden; min-height: 200px;">
                     <div id="${el.id}-preview" class="preview-text" style="text-align: left;"></div>
                 </div>
             </div>`;

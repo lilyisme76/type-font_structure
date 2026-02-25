@@ -1,4 +1,4 @@
-/* 다크모드 (기본 테마) */
+/* 다크모드 (기본 테마) 변수 */
 :root {
     --bg-color: #050505;
     --panel-bg: #111111;
@@ -15,7 +15,7 @@
     --void-black: #000000;
 }
 
-/* 라이트모드 (접근성 보정) */
+/* 라이트모드 변수 (접근성 보정) */
 body.light-mode {
     --bg-color: #F0F0F0;
     --panel-bg: #FFFFFF;
@@ -42,24 +42,28 @@ body {
 .theme-toggle { background: var(--theme-text); color: var(--bg-color); border: none; padding: 10px 20px; font-family: 'Space Mono', monospace; font-size: 14px; font-weight: bold; cursor: pointer; border-radius: 4px; transition: 0.3s; }
 .theme-toggle:hover { opacity: 0.8; }
 
-/* 탭 네비게이션 (링크 형태) */
 .tabs { display: flex; gap: 10px; flex-wrap: wrap; }
 .tab-btn { text-decoration: none; background: transparent; color: var(--grey); border: 1px solid var(--border-color); padding: 10px 20px; font-family: 'Space Mono', monospace; font-size: 14px; cursor: pointer; border-radius: 4px; transition: 0.3s; }
 .tab-btn:hover { border-color: var(--theme-text); color: var(--theme-text); }
 .tab-btn.active { background: var(--theme-text); color: var(--bg-color); font-weight: bold; }
 
-/* 데이터 */
 .data-injector { background: var(--panel-bg); padding: 15px 20px; border: 1px solid var(--border-color); border-radius: 4px; display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
 .data-injector label { color: var(--hot-pink); font-family: 'Space Mono', monospace; font-size: 12px; margin: 0; }
 .data-injector select { width: 300px; padding: 8px; margin: 0; }
 
-/* 공통 레이아웃 */
-.workspace { display: flex; gap: 20px; min-height: 700px; }
-.controls-panel { width: 420px; background: var(--panel-bg); border: 1px solid var(--border-color); padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 30px; transition: 0.3s; box-sizing: border-box; }
-.preview-panel { flex-grow: 1; border: 1px solid var(--border-color); background: var(--canvas-bg); position: relative; padding: 40px; display: flex; justify-content: center; align-items: center; overflow: hidden; transition: 0.3s; box-sizing: border-box; }
+/* 🚨 공통 레이아웃: 위(컨트롤) - 아래(프리뷰 캔버스) 구조로 변경 */
+.workspace { display: flex; flex-direction: column; gap: 20px; min-height: 700px; }
 
-/* 컨트롤러 UI */
-.control-group { border-bottom: 1px dashed var(--border-color); padding-bottom: 20px; }
+/* 🚨 컨트롤 패널: 가로 배열(Row) 및 가로 스크롤(overflow-x) 추가 */
+.controls-panel { width: 100%; background: var(--panel-bg); border: 1px solid var(--border-color); padding: 20px; overflow-x: auto; display: flex; flex-direction: row; gap: 30px; transition: 0.3s; box-sizing: border-box; align-items: flex-start; }
+
+/* 🚨 프리뷰 패널: 가로 폭 100% 사용 */
+.preview-panel { width: 100%; flex-grow: 1; min-height: 600px; border: 1px solid var(--border-color); background: var(--canvas-bg); position: relative; padding: 40px; display: flex; justify-content: center; align-items: center; overflow: hidden; transition: 0.3s; box-sizing: border-box; }
+
+/* 컨트롤러 UI: 개별 박스를 세로 점선으로 구분 */
+.control-group { flex: 1; min-width: 280px; border-right: 1px dashed var(--border-color); padding-right: 30px; display: flex; flex-direction: column; }
+.control-group:last-child { border-right: none; padding-right: 0; }
+
 .control-group h3 { font-family: 'Space Mono', monospace; font-size: 14px; color: var(--hot-pink); margin-top: 0; margin-bottom: 15px; text-transform: uppercase; }
 .row { display: flex; gap: 10px; margin-bottom: 15px; }
 label { font-size: 11px; color: var(--grey); text-transform: uppercase; margin-bottom: 5px; display: block; }
@@ -77,7 +81,7 @@ input[type="range"] { width: 100%; accent-color: var(--hot-pink); margin-bottom:
 .toggle-btn.active-toggle { background: var(--hot-pink); color: #fff; border-color: var(--hot-pink); }
 .specs { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--electric-cyan); background: var(--bg-color); padding: 10px; margin-top: 5px; line-height: 1.5; border: 1px solid var(--border-color); transition: 0.3s; }
 
-/* 각 캔버스 레이아웃 */
+/* 캔버스 레이아웃 */
 .canvas-arch { width: 100%; height: 100%; background: linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px); background-size: 40px 40px; position: relative; padding: 40px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; }
 .canvas-didactic { width: 100%; max-width: 450px; background: var(--panel-bg); border: 1px solid var(--border-color); padding: 40px; position: relative; box-sizing: border-box; box-shadow: 0 20px 40px rgba(0,0,0,0.3); } 
 .canvas-booklet { width: 100%; max-width: 800px; height: 500px; background: var(--theme-text); display: flex; box-shadow: 0 10px 30px rgba(0,0,0,0.5); box-sizing: border-box; color: var(--bg-color); }
