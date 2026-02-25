@@ -161,14 +161,14 @@ function updateView(id) {
     
     preview.innerHTML = text.replace(/\n/g, "<br>");
     preview.style.fontFamily = font;
-    preview.style.fontSize = size + 'px';
+    preview.style.fontSize = size + 'pt';
     preview.style.lineHeight = lead / 100;
     preview.style.textTransform = textCase;
     preview.style.fontStyle = styles[id].italic ? 'italic' : 'normal';
     preview.style.fontVariant = styles[id].sc ? 'small-caps' : 'normal';
     preview.style.color = textColor;
 
-    document.getElementById(`${id}-val-size`).innerText = size + 'px';
+    document.getElementById(`${id}-val-size`).innerText = size + 'pt';
     document.getElementById(`${id}-val-lead`).innerText = lead + '%';
 
     let colorName = 'Custom';
@@ -177,7 +177,7 @@ function updateView(id) {
     const fontName = font.includes('Futura') ? 'Futura' : (font.includes('Space') ? 'Space Mono' : 'Inter');
     document.getElementById(`${id}-specs`).innerHTML = 
         `Font: ${fontName} <br>
-         Size: ${size}px | Lead: ${lead}% <br>
+         Size: ${size}pt | Lead: ${lead}% <br>
          Case: ${textCase} | Color: ${colorName.toUpperCase()}`;
 }
 
