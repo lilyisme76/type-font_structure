@@ -26,9 +26,9 @@ const config = {
         { id: 'text-pagenum', label: 'Footer / Question', defaultFont: 'Space Mono', defaultText: didacticData['living'].footer, size: 10, lead: 140, color: 'var(--hot-pink)' }
     ],
     guide: [
-        { id: 'guide-title', label: 'Chapter Title', defaultFont: 'Futura', defaultText: 'THE SOURCE\nCODE', size: 48, lead: 100, color: 'var(--bg-color)' },
+        { id: 'guide-title', label: 'Chapter Title', defaultFont: 'Futura', defaultText: 'THE SOURCE\nCODE', size: 48, lead: 100, color: 'var(--theme-text)' },
         { id: 'guide-subtitle', label: 'Section Info', defaultFont: 'Inter', defaultText: 'Curatorial Statement', size: 14, lead: 120, color: 'var(--hot-pink)' },
-        { id: 'guide-body', label: 'Body Text', defaultFont: 'Space Mono', defaultText: 'The show guide is a natural extension of any exhibition. Consider how the exhibition as a whole can be distilled into the printed form. Keep it simple. Keep it linear.', size: 11, lead: 150, color: 'var(--bg-color)' },
+        { id: 'guide-body', label: 'Body Text', defaultFont: 'Space Mono', defaultText: 'The show guide is a natural extension of any exhibition. Consider how the exhibition as a whole can be distilled into the printed form. Keep it simple. Keep it linear.', size: 11, lead: 150, color: 'var(--theme-text)' },
         { id: 'guide-pagenum', label: 'Page Number', defaultFont: 'Space Mono', defaultText: '17', size: 10, lead: 100, color: 'var(--grey)' }
     ]
 };
