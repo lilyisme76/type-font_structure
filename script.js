@@ -7,7 +7,7 @@ const didacticData = {
     'intro': { subtitle: 'Curatorial Statement // TYPE3 2026', title: 'AI/AS26:\nTHE SOURCE', body: 'Robots. Coding. Light. Movement. And, of course, Typography! Surround yourself with a brilliant expression of typographic form and space; where art and technology work together to become instructional, cultural, and educational. In our current world, nothing is permanent. Robotics, automation, AI, multiple realities, and worldwide networks are innovations impacting the way we work, play and express our creativity.', footer: 'See the true creative potential of young minds as they explore a new world of AI and consider crucial questions.' }
 };
 
-// UI & 설정글 데이터
+// UI 설정 데이터
 const config = {
     home: [
         { id: 'home-1', label: 'Primary Font: Futura', defaultFont: 'Futura', defaultText: 'FUTURA IS A GEOMETRIC SANS-SERIF TYPEFACE. IN THIS SYSTEM, IT ACTS AS THE PHYSICAL ARCHITECTURE.', size: 42, lead: 100, color: 'var(--theme-text)' },
@@ -15,8 +15,8 @@ const config = {
         { id: 'home-3', label: 'Tertiary Font: Inter', defaultFont: 'Inter', defaultText: 'Inter serves as the neutral user interface layer, bridging the gap between human interaction and machine processing.', size: 14, lead: 130, color: 'var(--electric-cyan)' }
     ],
     wall: [
-        { id: 'wall-title', label: 'Wall Title', defaultFont: 'Futura', defaultText: 'EXHIBIT\nZONE 01', size: 140, lead: 90, color: 'var(--theme-text)' },
-        { id: 'wall-body', label: 'Main Didactic', defaultFont: 'Space Mono', defaultText: 'Welcome to the An Exhibition...in Parts, where art and technology work together. Experience emerging technologies visually expressed through typographic excellence.', size: 24, lead: 150, color: 'var(--terminal-green)' },
+        { id: 'wall-title', label: 'Wall Title', defaultFont: 'Futura', defaultText: 'Exhibition…in Parts', size: 140, lead: 90, color: 'var(--theme-text)' },
+        { id: 'wall-body', label: 'Main Didactic', defaultFont: 'Space Mono', defaultText: 'Welcome to the An Exhibition…in Parts, where art and technology work together. Experience emerging technologies visually expressed through typographic excellence.', size: 24, lead: 150, color: 'var(--terminal-green)' },
         { id: 'wall-desc', label: 'Caption / Specs', defaultFont: 'Inter', defaultText: 'Material: Vinyl', size: 12, lead: 120, color: 'var(--grey)' }
     ],
     text: [
@@ -88,7 +88,7 @@ function setColor(id, colorValue, element) {
 
 function createControls(targetDiv, elements) {
     const container = document.getElementById(targetDiv);
-    if (!container) return; // 해당 페이지에 컨테이너가 없으면 실행 안함
+    if (!container) return;
 
     elements.forEach(el => {
         styles[el.id] = { italic: false, sc: false };
@@ -113,10 +113,13 @@ function createControls(targetDiv, elements) {
             ${createSwatches(el.id, el.color)}
             <label>Text Input</label>
             <textarea id="${el.id}-text" oninput="updateView('${el.id}')">${el.defaultText}</textarea>
+            
             <label>Size (<span id="${el.id}-val-size">${el.size}px</span>)</label>
-            <input type="range" id="${el.id}-size" min="8" max="250" value="${el.size}" oninput="updateView('${el.id}')">
+            <input type="range" id="${el.id}-size" min="8" max="1200" value="${el.size}" oninput="updateView('${el.id}')">
+            
             <label>Leading (<span id="${el.id}-val-lead">${el.lead}%</span>)</label>
             <input type="range" id="${el.id}-lead" min="70" max="250" step="5" value="${el.lead}" oninput="updateView('${el.id}')">
+            
             <label>Style Options</label>
             <div class="style-toggles">
                 <button id="btn-italic-${el.id}" class="toggle-btn" style="font-style: italic;" onclick="toggleBtn('${el.id}', 'italic')">Italic</button>
@@ -131,8 +134,8 @@ function createControls(targetDiv, elements) {
                 <div class="controls-panel" style="width: 380px; border-right: 1px solid var(--border-color); border-top: none; border-bottom: none; border-left: none;">
                     ${html}
                 </div>
-                <div class="preview-panel" style="border: none; flex-grow: 1; display: flex; align-items: center; justify-content: flex-start;">
-                    <div id="${el.id}-preview" class="preview-text" style="max-width: 700px; text-align: left;"></div>
+                <div class="preview-panel" style="border: none; flex-grow: 1; display: flex; align-items: center; justify-content: flex-start; overflow: hidden;">
+                    <div id="${el.id}-preview" class="preview-text" style="text-align: left;"></div>
                 </div>
             </div>`;
         } else {
@@ -182,12 +185,12 @@ function toggleBtn(id, type) {
 
 // 페이지 로드 시 초기화 로직
 document.addEventListener("DOMContentLoaded", () => {
-    // 1. 저장된 테마 불러오기
+    // 저장된 테마 불러오기
     if (localStorage.getItem('theme') === 'light') {
         document.body.classList.add('light-mode');
     }
 
-    // 2. 현재 열려있는 페이지에 맞는 컨트롤러만 생성
+    // 현재 열려있는 페이지에 맞는 컨트롤러만 생성
     if (document.getElementById('home-workspace')) {
         createControls('home-workspace', config.home);
         config.home.forEach(el => updateView(el.id));
