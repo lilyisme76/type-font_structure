@@ -212,3 +212,11 @@ document.addEventListener("DOMContentLoaded", () => {
         config.guide.forEach(el => updateView(el.id));
     }
 });
+
+//디댁틱 패널 가로/세로 전환 함수
+function toggleOrientation() {
+    const panel = document.querySelector('.canvas-didactic');
+    if(panel) {
+        panel.classList.toggle('landscape');
+    }
+}

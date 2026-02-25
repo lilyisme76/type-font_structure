@@ -104,3 +104,21 @@ input[type="range"] { width: 100%; accent-color: var(--hot-pink); margin-bottom:
     overflow: hidden; 
 }
 .preview-text { margin: 0; padding: 0; font-weight: bold; transition: color 0.3s; word-break: break-word; }
+
+/* 디댁틱 패널 기본(세로) 및 가로(Landscape) 전환 클래스 */
+.canvas-didactic { 
+    width: 100%; 
+    max-width: 450px; /* 기본 세로(Portrait) 너비 */
+    background: var(--panel-bg); 
+    border: 1px solid var(--border-color); 
+    padding: 40px; 
+    position: relative; 
+    box-sizing: border-box; 
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    transition: max-width 0.4s cubic-bezier(0.25, 1, 0.5, 1); /* 부드러운 전환 애니메이션 */
+} 
+
+/* 가로 모드 토글 시 적용될 스타일 */
+.canvas-didactic.landscape {
+    max-width: 800px; /* 가로(Landscape) 너비 확장 */
+}
