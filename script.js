@@ -15,7 +15,7 @@ const config = {
         { id: 'home-3', label: 'Tertiary Font: Inter', defaultFont: 'Inter', defaultText: 'Inter serves as the neutral user interface layer, bridging the gap between human interaction and machine processing.', size: 14, lead: 130, color: 'var(--electric-cyan)' }
     ],
     wall: [
-        { id: 'wall-title', label: 'Wall Title', defaultFont: 'Futura', defaultText: 'An Exhibition…\nin Parts', size: 140, lead: 90, color: 'var(--theme-text)' },
+        { id: 'wall-title', label: 'Wall Title', defaultFont: 'Futura', defaultText: 'An Exhibition… in Parts', size: 140, lead: 90, color: 'var(--theme-text)' },
         { id: 'wall-body', label: 'Main Didactic', defaultFont: 'Space Mono', defaultText: 'Welcome to \'An Exhibition…in Parts\', where art and technology work together. Experience emerging technologies visually expressed through typographic excellence.', size: 24, lead: 150, color: 'var(--terminal-green)' },
         { id: 'wall-desc', label: 'Caption / Specs', defaultFont: 'Inter', defaultText: 'Material: Vinyl', size: 12, lead: 120, color: 'var(--grey)' }
     ],
