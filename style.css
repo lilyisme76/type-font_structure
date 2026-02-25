@@ -1,0 +1,85 @@
+/* 다크모드 (기본 테마) */
+:root {
+    --bg-color: #050505;
+    --panel-bg: #111111;
+    --border-color: #333333;
+    --theme-text: #FFFFFF;
+    --canvas-bg: #000000;
+    --grid-line: #1a1a1a;
+    
+    --terminal-green: #39FF14;
+    --electric-cyan: #00FFFF;
+    --hot-pink: #FF0099;
+    --grey: #888888;
+    --pure-white: #FFFFFF;
+    --void-black: #000000;
+}
+
+/* 라이트모드 (접근성 보정) */
+body.light-mode {
+    --bg-color: #F0F0F0;
+    --panel-bg: #FFFFFF;
+    --border-color: #CCCCCC;
+    --theme-text: #050505;
+    --canvas-bg: #FFFFFF;
+    --grid-line: #E5E5E5;
+    
+    --terminal-green: #008800; 
+    --electric-cyan: #006688;  
+    --hot-pink: #D00070;       
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--theme-text);
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 30px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.header-wrap { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 20px; }
+.theme-toggle { background: var(--theme-text); color: var(--bg-color); border: none; padding: 10px 20px; font-family: 'Space Mono', monospace; font-size: 14px; font-weight: bold; cursor: pointer; border-radius: 4px; transition: 0.3s; }
+.theme-toggle:hover { opacity: 0.8; }
+
+/* 탭 네비게이션 (링크 형태) */
+.tabs { display: flex; gap: 10px; flex-wrap: wrap; }
+.tab-btn { text-decoration: none; background: transparent; color: var(--grey); border: 1px solid var(--border-color); padding: 10px 20px; font-family: 'Space Mono', monospace; font-size: 14px; cursor: pointer; border-radius: 4px; transition: 0.3s; }
+.tab-btn:hover { border-color: var(--theme-text); color: var(--theme-text); }
+.tab-btn.active { background: var(--theme-text); color: var(--bg-color); font-weight: bold; }
+
+/* 데이터 */
+.data-injector { background: var(--panel-bg); padding: 15px 20px; border: 1px solid var(--border-color); border-radius: 4px; display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
+.data-injector label { color: var(--hot-pink); font-family: 'Space Mono', monospace; font-size: 12px; margin: 0; }
+.data-injector select { width: 300px; padding: 8px; margin: 0; }
+
+/* 공통 레이아웃 */
+.workspace { display: flex; gap: 20px; min-height: 700px; }
+.controls-panel { width: 420px; background: var(--panel-bg); border: 1px solid var(--border-color); padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 30px; transition: 0.3s; box-sizing: border-box; }
+.preview-panel { flex-grow: 1; border: 1px solid var(--border-color); background: var(--canvas-bg); position: relative; padding: 40px; display: flex; justify-content: center; align-items: center; overflow: hidden; transition: 0.3s; box-sizing: border-box; }
+
+/* 컨트롤러 UI */
+.control-group { border-bottom: 1px dashed var(--border-color); padding-bottom: 20px; }
+.control-group h3 { font-family: 'Space Mono', monospace; font-size: 14px; color: var(--hot-pink); margin-top: 0; margin-bottom: 15px; text-transform: uppercase; }
+.row { display: flex; gap: 10px; margin-bottom: 15px; }
+label { font-size: 11px; color: var(--grey); text-transform: uppercase; margin-bottom: 5px; display: block; }
+select, textarea { width: 100%; background: var(--bg-color); color: var(--theme-text); border: 1px solid var(--border-color); padding: 8px; font-family: 'Space Mono', monospace; font-size: 12px; box-sizing: border-box; margin-bottom: 10px; transition: 0.3s; cursor: pointer; }
+textarea { height: 70px; resize: vertical; cursor: text; }
+input[type="range"] { width: 100%; accent-color: var(--hot-pink); margin-bottom: 10px; cursor: pointer; }
+
+/* 컬러 스와치 & 토글 버튼 */
+.swatch-container { display: flex; gap: 8px; margin-bottom: 15px; flex-wrap: wrap; }
+.swatch { width: 22px; height: 22px; border-radius: 50%; cursor: pointer; border: 1px solid var(--grey); transition: 0.2s; box-sizing: border-box; }
+.swatch:hover { transform: scale(1.2); }
+.swatch.active-swatch { border: 2px solid var(--hot-pink); transform: scale(1.1); box-shadow: 0 0 8px var(--hot-pink); }
+.style-toggles { display: flex; gap: 5px; margin-bottom: 10px; }
+.toggle-btn { flex: 1; background: var(--bg-color); color: var(--grey); border: 1px solid var(--border-color); padding: 6px; cursor: pointer; font-size: 12px; transition: 0.2s; }
+.toggle-btn.active-toggle { background: var(--hot-pink); color: #fff; border-color: var(--hot-pink); }
+.specs { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--electric-cyan); background: var(--bg-color); padding: 10px; margin-top: 5px; line-height: 1.5; border: 1px solid var(--border-color); transition: 0.3s; }
+
+/* 각 캔버스 레이아웃 */
+.canvas-arch { width: 100%; height: 100%; background: linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px); background-size: 40px 40px; position: relative; padding: 40px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; }
+.canvas-didactic { width: 100%; max-width: 450px; background: var(--panel-bg); border: 1px solid var(--border-color); padding: 40px; position: relative; box-sizing: border-box; box-shadow: 0 20px 40px rgba(0,0,0,0.3); } 
+.canvas-booklet { width: 100%; max-width: 800px; height: 500px; background: var(--theme-text); display: flex; box-shadow: 0 10px 30px rgba(0,0,0,0.5); box-sizing: border-box; color: var(--bg-color); }
+.canvas-booklet .page { flex: 1; padding: 40px; position: relative; border-right: 1px solid #ccc; box-sizing: border-box; overflow: hidden; }
+.preview-text { margin: 0; padding: 0; font-weight: bold; transition: color 0.3s; word-break: break-word; }

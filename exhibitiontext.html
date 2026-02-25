@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exhibition Text - The Source Code</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,700;1,400;1,700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="header-wrap">
+        <div class="tabs">
+            <a href="index.html" class="tab-btn">01_TYPOGRAPHY_INFO</a>
+            <a href="wallgraphic.html" class="tab-btn">02_WALL_GRAPHICS</a>
+            <a href="exhibitiontext.html" class="tab-btn active">03_EXHIBITION_TEXT</a>
+            <a href="exhibitionguide.html" class="tab-btn">04_EXHIBITION_GUIDE</a>
+        </div>
+        <button class="theme-toggle" onclick="toggleTheme()">◐ LIGHT / DARK MODE</button>
+    </div>
+
+    <div class="data-injector">
+        <label>// INJECT_EXHIBIT_DATA:</label>
+        <select onchange="loadContent(this.value)">
+            <option value="living">Living pAIntings (Refik Anadol)</option>
+            <option value="doug">DOUG (Sougwen Chung)</option>
+            <option value="stupid">Just plAIn stupid</option>
+            <option value="norilla">NoRILLA</option>
+            <option value="intro">AI/AS26 Introduction</option>
+        </select>
+    </div>
+
+    <div class="workspace">
+        <div class="controls-panel" id="text-controls"></div>
+        <div class="preview-panel">
+            <div class="canvas-didactic">
+                <div id="text-subtitle-preview" class="preview-text" style="margin-bottom: 20px;"></div>
+                <div id="text-title-preview" class="preview-text" style="margin-bottom: 30px; line-height: 0.95;"></div>
+                <div id="text-body-preview" class="preview-text" style="font-weight:normal; margin-bottom: 30px;"></div>
+                <div id="text-pagenum-preview" class="preview-text" style="text-align: left; font-weight:normal;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
